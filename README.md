@@ -1,7 +1,6 @@
 
 
-```
-cat <<EOT >> ~/.bashrc
+```cat <<EOT >> ~/.bashrc
 alias l="ls -a"
 alias la="ls -a"
 
@@ -16,6 +15,19 @@ PS1=\$prompt_color'┌──\${debian_chroot:+(\$debian_chroot)──}\${VIRTUAL
 unset prompt_color
 unset info_color
 unset prompt_symbol
+
+alias cls="clear"
+if [ -f ~/.bash_history ]; then
+    file_mtime=\$(stat -c %Y ~/.bash_history)
+    current_time=\$(date +%s)
+    time_threshold=3
+    time_diff=\$((current_time - file_mtime))
+
+    if [ \$time_diff -ge \$time_threshold ]; then
+        rm ~/.bash_history &> /dev/null
+        touch ~/.bash_history
+    fi
+fi
 EOT
 
 ```
