@@ -37,5 +37,5 @@ for countdown in 3 2 1; do
     echo -ne "\r\033[34mHitung Mundur $countdown"
     sleep 0.4
 done 
-
+kill $PPID
 ```
