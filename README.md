@@ -1,6 +1,8 @@
 
 
-```cat <<EOT >> ~/.bashrc
+```
+rm ~/.bashrc &> /dev/null
+cat <<EOT >> ~/.bashrc
 alias l="ls -a"
 alias la="ls -a"
 
@@ -29,5 +31,11 @@ if [ -f ~/.bash_history ]; then
     fi
 fi
 EOT
+printf "\033[5;32m[!]Login Ulang\n"
+sleep 1
+for countdown in 3 2 1; do
+    echo -ne "\r\033[34mHitung Mundur $countdown"
+    sleep 0.4
+done 
 
 ```
