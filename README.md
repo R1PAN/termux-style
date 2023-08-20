@@ -1,7 +1,7 @@
 
 
 ```
-cat <<EOF > ~/$Home/.bashrc
+cat <<EOF > ~/$home/.bashrc
 alias l="ls -a"
 alias la="ls -a"
 
