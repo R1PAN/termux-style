@@ -22,7 +22,7 @@ alias cls="clear"
 if [ -f ~/.bash_history ]; then
     file_mtime=\$(stat -c %Y ~/.bash_history)
     current_time=\$(date +%s)
-    time_threshold=3
+    time_threshold=270
     time_diff=\$((current_time - file_mtime))
 
     if [ \$time_diff -ge \$time_threshold ]; then
