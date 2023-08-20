@@ -1,4 +1,8 @@
-```alias l="ls -a"
+
+
+```
+cat <<EOF > ~/$Home/.bashrc
+alias l="ls -a"
 alias la="ls -a"
 
 alias 00="kill \"$PPID\""
@@ -14,4 +18,5 @@ PS1=$prompt_color'┌──${debian_chroot:+($debian_chroot)──}${VIRTUAL_ENV
 unset prompt_color
 unset info_color
 unset prompt_symbol
+EOF
 ```
