@@ -1,4 +1,4 @@
-#```
+```
 alias l= "ls -a"
 prompt_color='\[\033[01;32m\]'
 info_color='\[\033[1;34m\]'
