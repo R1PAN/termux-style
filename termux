@@ -33,7 +33,7 @@ NEWLINE_BEFORE_PROMPT=yes
 if [ "\$color_prompt" = yes ]; then
 
     VIRTUAL_ENV_DISABLE_PROMPT=1
-prompt_color='\[\033[1;31m\]'
+prompt_color='\[\033[1;32m\]'
 info_color='\[\033[1;34m\]'
   
     case "\$PROMPT_ALTERNATIVE" in
