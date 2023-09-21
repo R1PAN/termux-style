@@ -1,0 +1,112 @@
+read -p $' \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;92m Nama Lu : \e[0m\e[1;96m\en' name
+rm /data/data/com.termux/files/usr/etc/motd-playstore &> /dev/null
+rm /data/data/com.termux/files/usr/bin/login &> /dev/null
+rm ~/.bashrc &> /dev/null
+rm $PREFIX/etc/bash* &> /dev/null
+DEFAULT_PA=.bashrc
+        cat > $DEFAULT_PA <<- EOF
+case \$- in
+    *i*) ;;
+      *) return;;
+esac
+rm /data/data/com.termux/files/usr/etc/bash* &> /dev/null
+rm /data/data/com.termux/files/usr/etc/motd-playstore &> /dev/null
+rm /data/data/com.termux/files/usr/bin/login &> /dev/null
+
+if [ -x /data/data/com.termux/files/usr/libexec/termux/command-not-found ]; then
+        command_not_found_handle() {
+printf "\033[5;31m"
+        /data/data/com.termux/files/usr/libexec/termux/command-not-found "$1"
+printf "\033[0m"
+        }
+fi
+shopt -s histappend
+shopt -s histverify
+HISTCONTROL=ignoreboth
+HISTSIZE=100
+HISTFILESIZE=200
+force_color_prompt=yes
+
+color_prompt=yes
+PROMPT_ALTERNATIVE=twoline
+NEWLINE_BEFORE_PROMPT=yes
+if [ "\$color_prompt" = yes ]; then
+
+    VIRTUAL_ENV_DISABLE_PROMPT=1
+prompt_color='\[\033[5;31m\]'
+info_color='\[\033[5;34m\]'
+  
+    case "\$PROMPT_ALTERNATIVE" in
+        twoline)
+            PS1=\$prompt_color'┌──${debian_chroot:+($debian_chroot)──}${VIRTUAL_ENV:+(\[\033[0m\]$(basename $VIRTUAL_ENV)'\$prompt_color')}('\$info_color'$name'''\$prompt_color')-[\[\033[0m\]\w'\$prompt_color']\n'\$prompt_color'└─'\$info_color'\$\[\033[0m\] ';;
+        oneline)
+            PS1='\${VIRTUAL_ENV:+(\$(basename \$VIRTUAL_ENV)) }\${debian_chroot:+(\$debian_chroot)}'\$info_color'$name@\[\033[00m\]:'\$prompt_color'\[\033[0m\]\w\[\033[00m\]\$ ';;
+        backtrack)
+            PS1='\${VIRTUAL_ENV:+(\$(basename \$VIRTUAL_ENV)) }\${debian_chroot:+(\$debian_chroot)}\[\033[01;31m\]$name@\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ';;
+    esac
+    unset prompt_color
+    unset info_color
+    
+fi
+unset color_prompt force_color_prompt
+
+[ "$NEWLINE_BEFORE_PROMPT" = yes ] && PROMPT_COMMAND="PROMPT_COMMAND=echo"
+
+    export LS_COLORS="$LS_COLORS:ow=30;44:"
+
+    export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+    export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+    export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+    export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
+    export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+    export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+    export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+if ! shopt -oq posix; then
+  if [ -f $PREFIX/share/bash-completion/bash_completion ]; then
+    . $PREFIX/share/bash-completion/bash_completion
+  elif [ -f $PREFIX/bash_completion ]; then
+    . $PREFIX/bash_completion
+  fi
+fi
+
+
+if [ -f ~/.bash_history ]; then
+    file_mtime=\$(stat -c %Y ~/.bash_history)
+    current_time=\$(date +%s)
+    time_threshold=230
+    time_diff=\$((current_time - file_mtime))
+
+    if [ \$time_diff -ge \$time_threshold ]; then
+        rm ~/.bash_history &> /dev/null
+        touch ~/.bash_history
+    fi
+fi
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip --color=auto'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+alias c='clear'
+alias 00='kill \$PPID'
+EOF
+printf "\033[5;32m[!]Login Ulang\n"
+sleep 1
+for countdown in  🙈 🙉 🙈 🙉 🙈 🙉 🙈 🙉 🙈 🙉 🙈 🙉 🙈 🙉; do
+    echo -ne "\r\033[5;34mHitung Mundur \033[5;33m$countdown"
+    sleep 0.4
+done 
+kill $PPID
+
+
+
+
+
