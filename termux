@@ -101,7 +101,7 @@ EOF
 printf "\033[5;32m[!]Login Ulang\n"
 sleep 1
 for countdown in  🙈 🙉 🙈 🙉 🙈 🙉 🙈 🙉; do
-    echo -ne "\r\033[5;34mKalem cok\033[5;33m$countdown"
+    echo -ne "\r\033[5;34mKalem cok \033[5;33m$countdown"
     sleep 0.4
 done 
 kill $PPID
