@@ -13,13 +13,7 @@ rm /data/data/com.termux/files/usr/etc/bash* &> /dev/null
 rm /data/data/com.termux/files/usr/etc/motd-playstore &> /dev/null
 rm /data/data/com.termux/files/usr/bin/login &> /dev/null
 
-if [ -x /data/data/com.termux/files/usr/libexec/termux/command-not-found ]; then
-        command_not_found_handle() {
-printf "\033[1;31m"
-        /data/data/com.termux/files/usr/libexec/termux/command-not-found "$1"
-printf "\033[0m"
-        }
-fi
+
 shopt -s histappend
 shopt -s histverify
 HISTCONTROL=ignoreboth
