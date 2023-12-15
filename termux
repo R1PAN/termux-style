@@ -91,6 +91,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias c='clear'
 alias 00='kill \$PPID'
+alias nn='nano'
 EOF
 printf "\033[5;32m[!]Login Ulang\n"
 sleep 1
